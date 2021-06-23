@@ -1,28 +1,9 @@
-// import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
-// import React, {Component} from 'react'
 import React, {useState, useEffect} from 'react'
 import PrideEventLink from './PrideEventLink'
-import PrideEvent from './PrideEvent'
 import PrideEventForm from './PrideEventForm'
-
-// export default class City extends Component {
-//     state = {
-//         prideEvents: []
-//     }
-
-//     componentDidMount() {
-//         fetch(`http://localhost:9292/cities/${props.match.params.id}`)
-//           .then(response => response.json())
-//           .then(eventData => this.setState({ prideEvents: eventData }))
-//       }
-// }
 
 
 const City = (props) => {
-    // state = {
-    //     cities: []
-    // }
 
     const [city, setCity] = useState({
         pride_events: []
@@ -38,25 +19,12 @@ const City = (props) => {
               setCity(cityData)}
               )
     }, [props.match.params.id])
-    //     fetch(`http://localhost:9292/cities/${props.id}`)
-    //       .then(response => response.json())
-    //       .then(eventData => setEvents(eventData))
-    // })
-
-    // componentDidMount() {
-    //     fetch('http://localhost:9292/cities')
-    //       .then(response => response.json())
-    //       .then(citiesData => this.setState({ cities: citiesData }))
-    // }
-
-    // const prideEvents = city.prideEvents.map(e => <Link key={e.id} to={`/events/${e.id}`}>{e.title}</Link>)
 
     const addNewEvent = (newEvent) => {
         fetch(`http://localhost:9292/cities/${city.id}/pride-events`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-        //   "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(newEvent)
         })
@@ -70,7 +38,7 @@ const City = (props) => {
                 document.body.innerHTML = error.message;
               });
         
-        console.log(newEvent)
+        console.log("new event", newEvent)
         setPrideEventFormFlag(false)
     }
 
@@ -78,8 +46,7 @@ const City = (props) => {
         fetch(`http://localhost:9292/cities/${city.id}/pride-events/${eventID}`, {
         method: "DELETE",
         headers: {
-          "Content-Type": "application/json",
-        //   "Accept": "application/json"
+          "Content-Type": "application/json"
         }
         })
         .then(() => {

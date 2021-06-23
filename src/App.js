@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home'
@@ -19,7 +18,6 @@ function App() {
           <Route exact path="/cities" component={Cities}/>
           <Route path={`/cities/:city_id/pride-events/:id`} component={PrideEvent}/>
           <Route path={`/cities/:id`} component={City}/>
-          {/* <Route path={`/cities/:city_id/pride-events/:id`} component={PrideEvent}/> */}
         </Switch>
       </Router>
     </div>

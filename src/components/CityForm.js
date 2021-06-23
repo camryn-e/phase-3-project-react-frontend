@@ -14,32 +14,6 @@ export default class CityForm extends Component {
         })
     }
 
-    // handleSubmit = event => {
-    //     event.preventDefault()
-    //     fetch('http://localhost:9292/events/', {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Accept": "application/json"
-    //     },
-    //     body: JSON.stringify(this.state)
-    //     })
-    //     .then(res => res.json())
-    //     .then(resp => {
-    //       this.props.addNewEvent(resp)
-    //     })
-    //         .catch(function(error) {
-    //             document.body.innerHTML = error.message;
-    //           });
-        
-    // }
-
-    // handleAddCity = (e) => {
-    //   e.preventDefault()
-    //   console.log(this.state)
-    //   this.props.addCity(this.state)
-    // }
-
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state)

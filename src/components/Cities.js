@@ -1,12 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
 import CityLink from './CityLink'
 import CityForm from './CityForm'
 
 const Cities = () => {
-    // state = {
-    //     cities: []
-    // }
 
     const [cities, setCities] = useState([])
 
@@ -18,12 +14,6 @@ const Cities = () => {
           .then(citiesData => setCities(citiesData))
     },[])
 
-    // componentDidMount() {
-    //     fetch('http://localhost:9292/cities')
-    //       .then(response => response.json())
-    //       .then(citiesData => this.setState({ cities: citiesData }))
-    // }
-
     const citiesList = cities.map(c => <CityLink key={c.id} city={c}/>)
 
     const addCity = (city) => {
@@ -31,8 +21,7 @@ const Cities = () => {
         fetch(`http://localhost:9292/cities`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-        //   "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(city)
         })

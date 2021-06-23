@@ -6,10 +6,9 @@ export default class PrideEventForm extends Component {
     
     state = {
         title: '',
-        category: '',
+        category: 'Parade',
         description: '',
-        age_rating: '',
-        // date: '',
+        age_rating: 'All Ages'
     }
 
     handleTitleChange = event => {
@@ -32,36 +31,11 @@ export default class PrideEventForm extends Component {
     }
 
     handleAgeRatingChange = event => {
+        console.log(event.target.value)
         this.setState({
           age_rating: event.target.value
         })
     }
-
-    // handleCityChange = event => {
-    //   this.setState({
-    //     city: event.target.value
-    //   })
-    // }
-
-    // handleSubmit = event => {
-    //     event.preventDefault()
-    //     fetch('http://localhost:9292/events/', {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Accept": "application/json"
-    //     },
-    //     body: JSON.stringify(this.state)
-    //     })
-    //     .then(res => res.json())
-    //     .then(resp => {
-    //       this.props.addNewEvent(resp)
-    //     })
-    //         .catch(function(error) {
-    //             document.body.innerHTML = error.message;
-    //           });
-        
-    // }
 
     handleSubmit = (e) => {
       e.preventDefault()
@@ -81,7 +55,7 @@ export default class PrideEventForm extends Component {
             />
             <br/>
             <label for="category">Category:</label><br/>
-            <select value={this.state.category} onChange={this.handleCategoryChange}>
+            <select name="category" value={this.state.category} onChange={event => this.handleCategoryChange(event)}>
               <option value="parade">Parade</option>
               <option value="party">Party</option>
               <option value="performance">Performance</option>
@@ -96,9 +70,9 @@ export default class PrideEventForm extends Component {
               value={this.state.description}
             />
             <br/>
-            <label for="age rating">Age Rating:</label><br/>
-            <select value={this.state.age_rating} onChange={this.handleAgeRatingChange}>
-              <option value="all ages">All Ages</option>
+            <label for="age_rating">Age Rating:</label><br/>
+            <select name="age_rating" value={this.state.age_rating} onChange={event => this.handleAgeRatingChange(event)}>
+              <option value="All Ages">All Ages</option>
               <option value="18+">18+</option>
               <option value="21+">21+</option>
             </select>

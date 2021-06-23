@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './components/Home'
+import NavBar from './components/NavBar'
+import PrideEventForm from './components/PrideEventForm'
+import Cities from './components/Cities'
+import City from './components/City'
+import PrideEvent from './components/PrideEvent'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+      <NavBar />
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/pride-event-form" component={PrideEventForm}/>
+          <Route exact path="/cities" component={Cities}/>
+          <Route path={`/cities/:city_id/pride-events/:id`} component={PrideEvent}/>
+          <Route path={`/cities/:id`} component={City}/>
+          {/* <Route path={`/cities/:city_id/pride-events/:id`} component={PrideEvent}/> */}
+        </Switch>
+      </Router>
     </div>
   );
 }
